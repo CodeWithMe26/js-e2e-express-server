@@ -35,7 +35,7 @@ stages:
          - task: ArchiveFiles@2
            displayName: 'Archive code'
            inputs:
-              rootFolderOrFile: 'source'
+              rootFolderOrFile: '.'
               includeRootFolder: false
               archiveType: 'zip'
               archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
