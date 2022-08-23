@@ -46,3 +46,23 @@ stages:
              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
              ArtifactName: 'drop'
              publishLocation: 'Container'
+  
+  - stage: 'DeployToDev'
+    dependsOn: 'Dev'
+    jobs:
+     - job: 
+       pool: 
+        vmImage: 'windows-2022'
+       steps:
+        - task: DownloadPipelineArtifact@2
+          inputs:
+            buildType: 'current'
+            artifactName: 'drop'
+            targetPath: '$(Pipeline.Workspace)'
+        - task: AzureRmWebAppDeployment@4
+          inputs:
+            ConnectionType: 'AzureRM'
+            azureSubscription: 'Azure for Students (9dccc2fd-f54b-41f4-93af-075a94f30522)'
+            appType: 'webApp'
+            WebAppName: 'demo-webapp-yaml'
+            packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
