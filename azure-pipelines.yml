@@ -22,16 +22,16 @@ stages:
            inputs:
              command: 'install'
              workingDir: 'source'
-             customRegistry: 'useFeed'
-             customFeed: '4f92a9d6-ce6d-44de-a4d1-dd4c2f11f052'
-         - task: Npm@1
-           displayName: 'Run "test" script'
-           inputs:
-             command: 'custom'
-             workingDir: 'source'
-             customCommand: 'test'
-             customRegistry: 'useFeed'
-             customFeed: '4f92a9d6-ce6d-44de-a4d1-dd4c2f11f052'
+            #  customRegistry: 'useFeed'
+            #  customFeed: '4f92a9d6-ce6d-44de-a4d1-dd4c2f11f052'
+        #  - task: Npm@1
+        #    displayName: 'Run "test" script'
+        #    inputs:
+        #      command: 'custom'
+        #      workingDir: 'source'
+        #      customCommand: 'test'
+        #      customRegistry: 'useFeed'
+        #      customFeed: '4f92a9d6-ce6d-44de-a4d1-dd4c2f11f052'
          - task: ArchiveFiles@2
            displayName: 'Archive code'
            inputs:
